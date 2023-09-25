@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcjlnfh8ru1gk"]
+[gd_scene load_steps=6 format=3 uid="uid://dcjlnfh8ru1gk"]
 
-[ext_resource type="Script" path="res://Scenes/SGTileMap.gd" id="2_5uqy1"]
 [ext_resource type="Texture2D" uid="uid://q70j1tpdiia3" path="res://icon.svg" id="2_intr0"]
 [ext_resource type="PackedScene" uid="uid://mpglui4lwhed" path="res://Scenes/ryu.tscn" id="3_syuv7"]
 
@@ -26,6 +25,5 @@ sources/0 = SubResource("TileSetAtlasSource_43y26")
 tile_set = SubResource("TileSet_2sc33")
 format = 2
 layer_0/tile_data = PackedInt32Array(131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65542, 0, 0, 65541, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65554, 0, 0, 65553, 0, 0, 65551, 0, 0, 65552, 0, 0, 65550, 0, 0, 65549, 0, 0, 65548, 0, 0, 65547, 0, 0)
-script = ExtResource("2_5uqy1")
 
 [node name="Ryu" parent="." instance=ExtResource("3_syuv7")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://mpglui4lwhed"]
 
-[ext_resource type="Script" path="res://Scenes/SGCharacterBody2D.gd" id="1_42dmr"]
+[ext_resource type="Script" path="res://Scenes/CharacterBody2D.gd" id="1_jkdyr"]
 [ext_resource type="Texture2D" uid="uid://q5g0dh3tlxrc" path="res://Assets/Ken/Idle.tres" id="2_gcovm"]
 [ext_resource type="Texture2D" uid="uid://bfn4j2tvhn6k5" path="res://Assets/Ken/Walk_Forward.tres" id="3_35k5g"]
 
@@ -142,7 +142,7 @@ _data = {
 }
 
 [node name="Ryu" type="CharacterBody2D"]
-script = ExtResource("1_42dmr")
+script = ExtResource("1_jkdyr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0.0610399, 0)
