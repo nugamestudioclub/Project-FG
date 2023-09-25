@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://q5g0dh3tlxrc"]
+
+[ext_resource type="Texture2D" uid="uid://bjrtygtfa7b26" path="res://Assets/Ken/Arcade - Street Fighter Alpha 3 - Ken Masters.png" id="1_cvbsy"]
+
+[resource]
+atlas = ExtResource("1_cvbsy")
+region = Rect2(24, 32, 434, 98)
