@@ -1,8 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://mpglui4lwhed"]
+[gd_scene load_steps=18 format=3 uid="uid://mpglui4lwhed"]
 
 [ext_resource type="Script" path="res://Scenes/CharacterBody2D.gd" id="1_jkdyr"]
 [ext_resource type="Texture2D" uid="uid://q5g0dh3tlxrc" path="res://Assets/Ken/Idle.tres" id="2_gcovm"]
 [ext_resource type="Texture2D" uid="uid://bfn4j2tvhn6k5" path="res://Assets/Ken/Walk_Forward.tres" id="3_35k5g"]
+[ext_resource type="Script" path="res://Scenes/movelist.gd" id="4_44yv1"]
+[ext_resource type="Script" path="res://Scenes/Idle.gd" id="4_ai4ti"]
+[ext_resource type="Script" path="res://Scenes/WalkForward.gd" id="4_o3ppl"]
+[ext_resource type="Script" path="res://Scenes/WalkBackward.gd" id="7_18dxp"]
+[ext_resource type="Script" path="res://Scenes/NeutralJump.gd" id="7_64bps"]
+[ext_resource type="Script" path="res://Scenes/ForwardJump.gd" id="9_mf5h0"]
+[ext_resource type="Script" path="res://Scenes/BackwardJump.gd" id="10_fgueq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rolt7"]
 radius = 22.0
@@ -10,6 +17,9 @@ height = 94.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8r24"]
 size = Vector2(58, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu4ti"]
+size = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_2ifu2"]
 resource_name = "Idle"
@@ -142,22 +152,29 @@ _data = {
 }
 
 [node name="Ryu" type="CharacterBody2D"]
+floor_snap_length = 0.0
 script = ExtResource("1_jkdyr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0.0610399, 0)
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_rolt7")
 debug_color = Color(0, 0.541176, 0.960784, 0.419608)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(-1, 0)
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_k8r24")
 debug_color = Color(0.156863, 0.643137, 0, 0.419608)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_iu4ti")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -2)
@@ -165,6 +182,38 @@ texture = ExtResource("2_gcovm")
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_hdt6k")
 }
+
+[node name="Moves" type="Node" parent="."]
+script = ExtResource("4_44yv1")
+
+[node name="Idle" type="Node" parent="Moves" groups=["Ground Movement"]]
+script = ExtResource("4_ai4ti")
+input = &"5"
+animation_name = "Idle"
+
+[node name="Forward Walk" type="Node" parent="Moves" groups=["Ground Movement"]]
+script = ExtResource("4_o3ppl")
+input = &"6"
+animation_name = "Walk Forward"
+
+[node name="Backward Walk" type="Node" parent="Moves" groups=["Ground Movement"]]
+script = ExtResource("7_18dxp")
+input = &"4"
+animation_name = "Walk Forward"
+
+[node name="Neutral Jump" type="Node" parent="Moves" groups=["Jump"]]
+script = ExtResource("7_64bps")
+input = &"8"
+animation_name = "Idle"
+
+[node name="Forward Jump" type="Node" parent="Moves" groups=["Jump"]]
+script = ExtResource("9_mf5h0")
+input = &"9"
+
+[node name="Backward Jump" type="Node" parent="Moves" groups=["Jump"]]
+script = ExtResource("10_fgueq")
+input = &"7"
